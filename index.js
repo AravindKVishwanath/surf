@@ -29,7 +29,9 @@ async function frontend() {
             "Simple HTML",
             "React.js",
             "React Native",
-            "React Native Tabs"
+            "React Native Tabs",
+            "React Native (Expo)",
+            "React Native Tabs (Expo)"
         ]
     })
     const spinner = createSpinner("Moving to next Steps....").start()
@@ -45,10 +47,18 @@ async function frontend() {
         reactNative(projectName,"javascript")
     }else if(answers.frontend==="React Native" && language==="TypeScript"){
         reactNative(projectName,"typescript")
+    }else if(answers.frontend==="React Native (Expo)" && language==="JavaScript"){
+        reactNative(projectName,"javascript",true)
+    }else if(answers.frontend==="React Native (Expo)" && language==="TypeScript"){
+        reactNative(projectName,"typescript",true)
     }else if(answers.frontend==="React Native Tabs" && language==="JavaScript"){
         reactNative(projectName,"tabs")
     }else if(answers.frontend==="React Native Tabs" && language==="TypeScript"){
         reactNative(projectName,"tabs-typescript")
+    }else if(answers.frontend==="React Native Tabs (Expo)" && language==="JavaScript"){
+        reactNative(projectName,"tabs",true)
+    }else if(answers.frontend==="React Native Tabs (Expo)" && language==="TypeScript"){
+        reactNative(projectName,"tabs-typescript",true)
     }
 
 }

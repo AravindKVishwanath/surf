@@ -79,36 +79,52 @@ async function reactJS(projectName,language){
     }
 }
 
-async function reactNative(projectName,templateType){
+async function reactNative(projectName,templateType,useExpo = false){
     const projectDirectory = path.join(process.cwd(), projectName);
     try {
         await fs.mkdirp(projectDirectory); // Create the project directory
         process.chdir(projectDirectory); // Change to the project directory
 
         let initCommand;
-        switch (templateType.toLowerCase()) {
-            case 'typescript':
-                // Initialize React Native with TypeScript template
-                initCommand = `npx react-native init . --template react-native-template-typescript`;
-                break;
-            case 'tabs-typescript':
-                // Initialize React Native with Tabs template (React Navigation) using TypeScript
-                initCommand = `npx react-native init . --template react-native-template-typescript --template react-native-template-react-navigation`;
-                break;
-            case 'javascript':
-                // Initialize React Native with JavaScript template
-                initCommand = `npx react-native init .`; // Default template is JavaScript
-                break;
-            case 'tabs':
-                // Initialize React Native with Tabs template (React Navigation) using JavaScript
-                initCommand = `npx react-native init . --template react-native-template-react-navigation`;
-                break;
-            // Add more cases for other templates as needed
-            default:
-                console.error('Unsupported template type specified.');
-                return;
+        if (useExpo) {
+            // Handle Expo initialization
+            switch (templateType.toLowerCase()) {
+                case 'typescript':
+                    initCommand = `npx create-expo-app . --template expo-template-blank-typescript`;
+                    break;
+                case 'tabs-typescript':
+                    initCommand = `npx create-expo-app . --template expo-template-tabs-typescript`;
+                    break;
+                case 'javascript':
+                    initCommand = `npx create-expo-app . --template expo-template-blank`;
+                    break;
+                case 'tabs':
+                    initCommand = `npx create-expo-app . --template expo-template-tabs`;
+                    break;
+                default:
+                    console.error('Unsupported template type specified for Expo.');
+                    return;
+            }
+        } else {
+            // Handle React Native CLI initialization
+            switch (templateType.toLowerCase()) {
+                case 'typescript':
+                    initCommand = `npx react-native init . --template react-native-template-typescript`;
+                    break;
+                case 'tabs-typescript':
+                    initCommand = `npx react-native init . --template react-native-template-typescript --template react-native-template-react-navigation`;
+                    break;
+                case 'javascript':
+                    initCommand = `npx react-native init .`; // Default template is JavaScript
+                    break;
+                case 'tabs':
+                    initCommand = `npx react-native init . --template react-native-template-react-navigation`;
+                    break;
+                default:
+                    console.error('Unsupported template type specified.');
+                    return;
+            }
         }
-
         // Run the initialization command
         exec(initCommand, (error, stdout, stderr) => {
             if (error) {

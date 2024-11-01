@@ -94,3 +94,4 @@ Interested in contributing to Sparq? We welcome pull requests! Please check our 
 ---
 
 Enjoy coding with Sparq! 🚀
+![alt text](image.png)
