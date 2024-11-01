@@ -3,7 +3,7 @@
 **Sparq** is a CLI tool designed to "spark" your development process by setting up boilerplate project templates across various tech stacks with ease. Whether you’re building frontend, backend, full-stack, or mobile applications, Sparq has you covered! Choose from popular templates, configure the project type and language, and instantly get started with a ready-to-go project structure.
 
 ---
-
+[View this package on npm]([https://www.npmjs.com/package/your-package-name](https://www.npmjs.com/package/sparq)
 ## Features
 
 - **Quick Setup**: Generate fully structured projects with a single command.
