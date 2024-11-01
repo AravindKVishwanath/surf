@@ -3,14 +3,6 @@ import path from 'path';
 import { exec } from 'child_process';
 import { createSpinner } from 'nanospinner';
 
-const sleep = (ms=2000) => new Promise((r)=>setTimeout(r,ms))
-
-async function spin(loader,ans) {
-    const spinner = createSpinner(`${loader}`).start()
-    await sleep()
-    spinner.success({text:`${ans} Successfully initialized!!`})
-}
-
 
 async function fullstackProject(projectName, projectType, language) {
     const projectDirectory = path.join(process.cwd(), projectName);
